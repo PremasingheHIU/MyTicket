@@ -4,6 +4,7 @@ const Movie = require("../models/Movie");
 
 // CREATE a booking
 const createBooking = async (req, res) => {
+    console.log("CREATE BOOKING FUNCTION REACHED");
     try {
         const {
             customerName,
@@ -13,6 +14,12 @@ const createBooking = async (req, res) => {
             showTime,
             ticketCount
         } = req.body;
+
+        if (!req.user) {
+    return res.status(401).json({
+        message: "Please log in before booking."
+    });
+}
 
         // Check whether the movie ID is valid
         if (!mongoose.isValidObjectId(movie)) {
@@ -33,16 +40,18 @@ const createBooking = async (req, res) => {
         // Calculate the total price on the server
         const totalPrice = selectedMovie.ticketPrice * Number(ticketCount);
 
-        // Create the booking
-        const booking = await Booking.create({
-            customerName,
-            customerEmail,
-            movie,
-            showDate,
-            showTime,
-            ticketCount,
-            totalPrice
-        });
+        
+        // Create the booking and link it to the logged-in user
+const booking = await Booking.create({
+    customerName,
+    customerEmail,
+    user: req.user._id,
+    movie,
+    showDate,
+    showTime,
+    ticketCount,
+    totalPrice
+});
 
         res.status(201).json({
             message: "Booking created successfully",
@@ -56,7 +65,7 @@ const createBooking = async (req, res) => {
             });
         }
 
-        console.error("Booking creation error:", error.message);
+        console.error("Booking creation error:", error);
 
         res.status(500).json({
             message: "Failed to create booking"
@@ -65,9 +74,12 @@ const createBooking = async (req, res) => {
 };
 
 // READ all bookings
+// READ bookings belonging to the logged-in user
 const getBookings = async (req, res) => {
     try {
-        const bookings = await Booking.find()
+        const bookings = await Booking.find({
+            user: req.user._id
+        })
             .populate("movie", "title genre ticketPrice")
             .sort({ createdAt: -1 });
 
@@ -83,6 +95,7 @@ const getBookings = async (req, res) => {
 };
 
 // READ one booking
+// READ one booking belonging to the logged-in user
 const getBookingById = async (req, res) => {
     try {
         if (!mongoose.isValidObjectId(req.params.id)) {
@@ -91,7 +104,10 @@ const getBookingById = async (req, res) => {
             });
         }
 
-        const booking = await Booking.findById(req.params.id)
+        const booking = await Booking.findOne({
+            _id: req.params.id,
+            user: req.user._id
+        })
             .populate("movie", "title genre ticketPrice");
 
         if (!booking) {

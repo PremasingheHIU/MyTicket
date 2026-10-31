@@ -5,6 +5,7 @@
 # Allow example environment files
 !.env.example
 
+
 # Node.js dependencies
 node_modules/
 

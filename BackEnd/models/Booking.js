@@ -19,6 +19,11 @@ const bookingSchema = new mongoose.Schema(
                 "Please enter a valid email address"
             ]
         },
+        user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: false
+},
 
         movie: {
             type: mongoose.Schema.Types.ObjectId,

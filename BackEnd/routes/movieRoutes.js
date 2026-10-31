@@ -8,21 +8,18 @@ const {
     deleteMovie
 } = require("../controllers/movieController");
 
+const protect = require("../middleware/authMiddleware");
+const requireAdmin = require("../middleware/adminMiddleware");
+
 const router = express.Router();
 
-// GET /api/movies
+// Public routes: anyone can browse movies
 router.get("/", getMovies);
-
-// GET /api/movies/:id
 router.get("/:id", getMovieById);
 
-// POST /api/movies
-router.post("/", createMovie);
-
-// PUT /api/movies/:id
-router.put("/:id", updateMovie);
-
-// DELETE /api/movies/:id
-router.delete("/:id", deleteMovie);
+// Admin-only routes: authentication and admin role required
+router.post("/", protect, requireAdmin, createMovie);
+router.put("/:id", protect, requireAdmin, updateMovie);
+router.delete("/:id", protect, requireAdmin, deleteMovie);
 
 module.exports = router;

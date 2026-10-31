@@ -5,6 +5,7 @@ require("dotenv").config();
 const connectDB = require("./db");
 const movieRoutes = require("./routes/movieRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
+const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 // Middleware
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/movies", movieRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/auth", authRoutes);
 // Test route
 app.get("/api/bookings-test", (req, res) => {
     res.send("Booking route is working!");
