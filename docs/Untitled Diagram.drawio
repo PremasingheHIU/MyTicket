@@ -1,0 +1,51 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="4XdzpYyiopZ6Byczzko-" name="MyTicket ER Diagram">
+    <mxGraphModel dx="1743" dy="1371" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="light-dark(#FFFFFF,#B3B3B3)" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-1" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=28;fontStyle=1;fillColor=light-dark(transparent,#000000);" value="MyTicket — Entity Relationship Diagram" vertex="1">
+          <mxGeometry height="46" width="554" x="363" y="43" as="geometry" />
+        </mxCell>
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;fontSize=18;shadow=1;gradientColor=default;" value="&lt;b&gt;USER&lt;/b&gt;&lt;hr&gt;&lt;u&gt;PK&lt;/u&gt; _id : ObjectId&lt;br&gt;name : String (required, min 2)&lt;br&gt;email : String (required, unique)&lt;br&gt;password : String (required, min 8)&lt;br&gt;role : String (user/admin, default user)&lt;br&gt;createdAt : Date&lt;br&gt;updatedAt : Date" vertex="1">
+          <mxGeometry height="327" width="335" x="14" y="233" as="geometry" />
+        </mxCell>
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;fontSize=18;shadow=1;fontFamily=Helvetica;gradientColor=default;" value="&lt;b&gt;BOOKING&lt;/b&gt;&lt;hr&gt;&lt;u&gt;PK&lt;/u&gt; _id : ObjectId&lt;br&gt;customerName : String (required, min 2)&lt;br&gt;customerEmail : String (required, valid email)&lt;br&gt;user : ObjectId (FK, optional)&lt;br&gt;movie : ObjectId (FK, required)&lt;br&gt;showDate : Date (required)&lt;br&gt;showTime : String (required)&lt;br&gt;ticketCount : Number (integer, min 1)&lt;br&gt;totalPrice : Number (min 0.01)&lt;br&gt;createdAt : Date&lt;br&gt;updatedAt : Date" vertex="1">
+          <mxGeometry height="407" width="361" x="605" y="172" as="geometry" />
+        </mxCell>
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;fontSize=18;shadow=1;fontFamily=Helvetica;gradientColor=default;" value="&lt;b&gt;MOVIE&lt;/b&gt;&lt;hr&gt;&lt;u&gt;PK&lt;/u&gt; _id : ObjectId&lt;br&gt;title : String (required)&lt;br&gt;genre : String (required)&lt;br&gt;duration : Number (min 1)&lt;br&gt;description : String (required)&lt;br&gt;poster : String (optional, default empty)&lt;br&gt;ticketPrice : Number (min 0.01)&lt;br&gt;createdAt : Date&lt;br&gt;updatedAt : Date" vertex="1">
+          <mxGeometry height="325" width="358" x="1225" y="181" as="geometry" />
+        </mxCell>
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-5" edge="1" parent="1" source="sMbjwbgEoSt6Ik6T9Dvi-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeWidth=2;strokeColor=#F0C66E;fontColor=#F0C66E;fontSize=15;labelBackgroundColor=#14141B;entryX=0.01;entryY=0.362;entryDx=0;entryDy=0;entryPerimeter=0;" target="sMbjwbgEoSt6Ik6T9Dvi-3" value="&lt;b&gt;has / is associated with&lt;/b&gt;">
+          <mxGeometry relative="1" x="0.025" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="589.3" y="328.4" />
+              <mxPoint x="589.3" y="319.3" />
+            </Array>
+            <mxPoint x="553.75" y="315.75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-6" edge="1" parent="1" source="sMbjwbgEoSt6Ik6T9Dvi-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;strokeWidth=2;strokeColor=#F0C66E;fontColor=#F0C66E;fontSize=15;labelBackgroundColor=#14141B;" target="sMbjwbgEoSt6Ik6T9Dvi-3" value="&lt;b&gt;is booked for / has bookings&lt;/b&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="815" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-7" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;autosize=1;fontSize=18;fontStyle=1;fontColor=#FFFFFF;labelBackgroundColor=#14141B;" value="1" vertex="1">
+          <mxGeometry height="34" width="28" x="349" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-8" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;autosize=1;fontSize=18;fontStyle=1;fontColor=#FFFFFF;labelBackgroundColor=#14141B;" value="0..*" vertex="1">
+          <mxGeometry height="34" width="45" x="565" y="279" as="geometry" />
+        </mxCell>
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-9" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;autosize=1;fontSize=18;fontStyle=1;fontColor=#FFFFFF;labelBackgroundColor=#14141B;" value="1" vertex="1">
+          <mxGeometry height="34" width="28" x="1192" y="291" as="geometry" />
+        </mxCell>
+        <mxCell id="sMbjwbgEoSt6Ik6T9Dvi-10" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;autosize=1;fontSize=18;fontStyle=1;fontColor=#FFFFFF;labelBackgroundColor=#14141B;" value="0..*" vertex="1">
+          <mxGeometry height="34" width="45" x="915" y="291" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
