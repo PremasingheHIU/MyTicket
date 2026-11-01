@@ -34,9 +34,11 @@ The application uses the MERN stack, consisting of MongoDB, Express.js, React.js
 - Restriction of booking access to authenticated users.
 - Filtering of booking records so users can access their own bookings.
 
+
 ## 3. Technologies Used
 
 | Technology | Purpose |
+|---|---|
 | MongoDB | Persistent database storage |
 | Express.js | Backend API development |
 | React.js | Frontend user interface |
@@ -47,9 +49,11 @@ The application uses the MERN stack, consisting of MongoDB, Express.js, React.js
 | Vite | Frontend development server |
 | Git and GitHub | Version control and source code hosting |
 
+
+
 ## 4. Project Structure
 
-
+```text
 MyTicket/
 ├── BackEnd/
 │   ├── controllers/
@@ -63,11 +67,16 @@ MyTicket/
 │   ├── public/
 │   ├── index.html
 │   └── package.json
+├── docs/
+│   ├── MyTicket_ER_Diagram.pdf
+│   └── MyTicket_ER_Diagram.drawio
+├── screenshots/
 ├── .gitignore
 └── README.md
+```
 
+The backend handles API requests, authentication, authorization, data validation, and database operations. The frontend provides the user interface for movie browsing, booking, and administrator movie management.
 
-The backend handles API requests, authentication, authorization, data validation and database operations. The frontend provides the user interface for movie browsing, booking and administrator movie management.
 
 ## 5. Database Design
 
